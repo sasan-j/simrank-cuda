@@ -1,3 +1,18 @@
+"""
+# SimRank CUDA
+
+This is a CUDA implementation of the SimRank algorithm for bipartite graphs.
+
+## Authors
+- François Robinet <francois.robinet@uni.lu>
+- Sasan Jafarnejad <s.jafarnejad@gmail.com>
+
+## License
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
+
+"""
+
+
 import random
 
 from numba import cuda
@@ -16,7 +31,6 @@ def create_random_bipartite_graph(P=50, C=50, p=0.1):
             random.random(), 2
         )  # Assigns a random float from 0 to 1
 
-    # The nodes are labeled 0 to P-1 for the first set, and n1 to P+C-1 for the second set
     p_nodes = {n for n, d in B.nodes(data=True) if d["bipartite"] == 0}
     c_nodes = set(B) - p_nodes
 
